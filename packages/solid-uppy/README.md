@@ -10,21 +10,33 @@
 yarn add @uppy/core solid-uppy
 ```
 
-### NOTE
-
-Install the following as needed:
-
-- [`@uppy/dashboard`](https://uppy.io/docs/dashboard/) for `createUppyDashboard`
-- [`@uppy/drag-drop`](https://uppy.io/docs/drag-drop/) for `createUppyDragDrop`
-- [`@uppy/drop-target`](https://uppy.io/docs/drop-target/) for `createUppyDropTarget`
-- [`@uppy/file-input`](https://uppy.io/docs/drop-target/) for `createUppyFileInput`
-- [`@uppy/informer`](https://uppy.io/docs/informer/) for `createUppyInformer`
-- [`@uppy/progress-bar`](https://uppy.io/docs/progress-bar/) for `createUppyProgressBar`
-- [`@uppy/status-bar`](https://uppy.io/docs/status-bar/) for `createUppyStatusBar`
-
 ## Usage
 
-TODO
+```js
+import Uppy from '@uppy/core';
+import { createUppy, useUppyPlugin, useUppyEvent } from 'solid-uppy';
+import Dashboard from '@uppy/dashboard';
+import ImageEditor from '@uppy/image-editor';
+
+function Example(props) {
+  // Create an instance
+  const instance = createUppy(() => new Uppy());
+
+  // Use some plugins
+  useUppyPlugin(instance, 'Dashboard', Dashboard, {
+    inline: true,
+    get target() {
+      return props.element;
+    },
+  });
+  useUppyPlugin(instance, 'ImageEditor', ImageEditor);
+
+  // Listen to events
+  useUppyEvent(instance, 'file-editor:start', (file) => {
+    console.log(file);
+  }); 
+}
+```
 
 ## License
 
