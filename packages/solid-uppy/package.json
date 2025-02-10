@@ -13,7 +13,7 @@
   },
   "author": "Alexis Munsayac",
   "private": false,
-  "version": "0.2.1",
+  "version": "0.3.0",
   "types": "./dist/types/index.d.ts",
   "main": "./dist/cjs/production/index.js",
   "module": "./dist/esm/production/index.js",
